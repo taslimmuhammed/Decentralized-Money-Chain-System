@@ -1,0 +1,66 @@
+import React,{useState, useEffect, useContext} from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
+import {EthersContext} from '../../Context/EthersContext'
+import Loader from '../Loading/Loading'
+import './Admin.css'
+function Admin() {
+const navigate  = useNavigate()
+const [isLoading, setisLoading] = useState(false)
+const { checkOwner, changeOwner, changeLimit,limitCount} = useContext(EthersContext)
+const [Address, setAddress] = useState()
+const [Limit, setLimit] = useState()
+
+const initiator = async()=>{
+    setisLoading(true)
+    try{
+     const v = await checkOwner()
+     const l1  = await limitCount()
+     setLimit(l1)
+     if(v!=true) {
+         alert("Not Authorized")
+         navigate('/')
+     }
+    }catch(e){
+        console.log(e)
+        alert(e)
+    }
+    setisLoading(false)
+}
+
+const changeOwner1=async()=>{
+   setisLoading(true)
+   if(Limit==null) return alert("fill in something")
+   await changeOwner(Address)
+   setisLoading(false)
+   initiator()
+}
+
+const changeLimit1=async()=>{
+    setisLoading(true)
+    if(Address==null) return alert("fill in something")
+     await changeLimit(Limit)
+    setisLoading(false)
+    initiator()
+ }
+
+useEffect(() => {
+    initiator()
+}, [])
+
+  return isLoading? <Loader/>:
+  <div>
+      <div className='h_head'> Admin Panel</div>
+      <div className='h_box  text-white'>
+          <div> Total number of tokens Supplied:</div>
+          <div className='text-green-400'>{Limit}</div>
+          <div>Transfer ownership</div>
+          <input placeHolder="new Address" onChange={(e)=>{setAddress(e.target.value)}}></input>
+          <button class="button-8" role="button" onClick={changeOwner1}>Change Owner</button>
+          <div>Change Unit max limit</div>
+          <input placeHolder="new Limit" onChange={(e)=>{setLimit(e.target.value)}}></input>
+          <button class="button-8" role="button" onClick={changeLimit1}>Change Limit</button>
+      </div>
+  </div>
+}
+
+export default Admin
