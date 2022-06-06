@@ -7,8 +7,8 @@ export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
 
-  const contractAddress = "0xc135d96af805274912150ff21b0cb9e0faaa9592937ef429e5ceca39aee6a840"
-  const usdtContractAddress  =  "0x1920251c49c5dffed45667e2b071a402754a930a1c505fb43b4d09389b0ba65b"
+  const contractAddress = "0x758782bf476b8ca4985eda23527b0f2ea94dbd61"
+  const usdtContractAddress  =  "0x493e6ad3b3e782db7e056d39253bae2f92bb96b6"
     const [currentAccount, setCurrentAccount] = useState(null);
     const [N, setN] = useState();
 
@@ -63,8 +63,7 @@ export default function Ethers({children}){
         const signer = provider.getSigner()
         const contract = new ethers.Contract(contractAddress, abi,signer)
         const accounts = await ethereum.request({method: "eth_accounts"})
-          const account  = accounts[0]
-         
+        const account  = accounts[0]
          const s1 = await contract.active(account)
          const s2 =  parseInt(s1, 16)
          return s2;
