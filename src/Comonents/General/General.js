@@ -40,7 +40,7 @@ const initiaor= async()=>{
   setisLoading(true)
   try{
     const s1 = await checkSignIn()
-    if(s1!=2) navigate("/")
+    if(s1!=1) navigate("/")
     const units = await unitBalance()
     setUnits(units)
     const bunits = await unitCount()
