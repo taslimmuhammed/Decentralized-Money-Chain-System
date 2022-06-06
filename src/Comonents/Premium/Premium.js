@@ -8,7 +8,7 @@ Modal.setAppElement("#root");
 function Premium() {
     let y=0;
     const navigate = useNavigate()
-    const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount} = useContext(EthersContext)
+    const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount,getReferanceProfit} = useContext(EthersContext)
     const [Units, setUnits] = useState(0)
     const [BUnits, setBUnits] = useState(0)
     const [Bunit1, setBunit1] = useState(0)
@@ -21,9 +21,11 @@ function Premium() {
             if(s1!=2) navigate("/")
             const units = await unitBalance()
             setUnits(units)
+            const refer = await getReferanceProfit()
+            setReferalBalance(refer)
             const bunits = await unitCount()
             let balance = bunits- units/100
-                // if(balance<0) balance = 0;
+           if(balance<0) balance = 0;
             balance = balance.toFixed(2);
             setBUnits(balance)
             setBunit1(bunits)
@@ -95,7 +97,7 @@ function Premium() {
             <div className='sub_sub'>10 USDt (*polygon chain)</div>
 
             <div className='sub_head'>Reference Profit</div>
-            <div className='sub_sub'>xxx/USDT</div>
+            <div className='sub_sub'>{ReferalBalance}/USDT</div>
               
             <div className='p_buttons' >
             <button className="button-9" role="button" onClick={handleBuy}>Buy UNIT</button>
@@ -140,7 +142,7 @@ function Premium() {
           
         </div>
 
-        <div className='reffer_card'>
+        {/* <div className='reffer_card'> */}
             <button className='reffer_btn' onClick={toggleModal}>Get refferal Id</button>
 
 <Modal
@@ -155,7 +157,7 @@ function Premium() {
   <div className='md_2'>Your referal Id: {currentAccount}</div>
   <button onClick={toggleModal} className="md_3">Close modal</button>
 </Modal>
-        </div>
+        {/* </div> */}
     </div>
   
 }
