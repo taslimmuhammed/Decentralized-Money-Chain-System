@@ -22,7 +22,9 @@ function Premium() {
             const units = await unitBalance()
             setUnits(units)
             const bunits = await unitCount()
-            const balance = bunits- units/100
+            let balance = bunits- units/100
+                // if(balance<0) balance = 0;
+            balance = balance.toFixed(2);
             setBUnits(balance)
             setBunit1(bunits)
         }catch(e){

@@ -44,7 +44,8 @@ const initiaor= async()=>{
     const units = await unitBalance()
     setUnits(units)
     const bunits = await unitCount()
-    const balance = bunits- units/100
+    let balance = bunits- units/100
+
     setBUnits(balance)
     setBunit1(bunits)
   }catch(e){
