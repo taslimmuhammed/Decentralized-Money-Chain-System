@@ -103,8 +103,8 @@ function Premium() {
             <div className='sub_sub'>{ReferalBalance}/USDT</div>
               
             <div className='p_buttons' >
-            <button className="button-9" role="button" onClick={handleBuy}>Buy UNIT</button>
-            <button className="button-9" role="button" onClick={handleLot}>LOT</button>
+            <button className="button-9" role="button" onClick={handleBuy}>Purchase</button>
+            <button className="button-9" role="button" onClick={handleLot}>Start</button>
             </div>
             <div className='p_rec'>Recommend Members</div>
 

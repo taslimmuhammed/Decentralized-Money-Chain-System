@@ -78,8 +78,8 @@ useEffect(() => {
       <div className='sub_head'>Price of 1 Unit</div>
           <div className='sub_sub'>10 USDt (*polygon chain)</div>
       <div className='p_buttons' >
-          <button className="button-9" role="button" onClick={handleBuy}>Buy UNIT</button>
-          <button className="button-9" role="button" onClick={handleLot}>LOT</button>
+          <button className="button-9" role="button" onClick={handleBuy}>Purchase</button>
+          <button className="button-9" role="button" onClick={handleLot}>Start</button>
           </div>
      
   </div>
