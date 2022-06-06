@@ -21,7 +21,9 @@ function Premium() {
             if(s1!=2) navigate("/")
             const units = await unitBalance()
             setUnits(units)
-            const refer = await getReferanceProfit()
+            let  refer = await getReferanceProfit()
+            refer = refer/1000000
+            refer = refer.toFixed(2);
             setReferalBalance(refer)
             const bunits = await unitCount()
             let balance = bunits- units/100
