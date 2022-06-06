@@ -77,6 +77,7 @@ export default function Ethers({children}){
           const signer = provider.getSigner()
           const contract = new ethers.Contract(contractAddress ,abi ,signer)
           const transfer = await contract.signIn(address, active)
+          await transfer.wait()
         }catch(e){
       alert(e)
         }
