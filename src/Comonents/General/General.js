@@ -12,6 +12,7 @@ function General() {
   const [isLoading, setisLoading] = useState(false)
   const handleBuy= async()=>{
     setisLoading(true)
+    if(Bunit1==1) return alert('Your limit has been reached')
    try{
       await buyToken()
       alert(" Succefully bought 1 UNIT")
@@ -40,6 +41,7 @@ const handleLot= async()=>{
 const initiaor= async()=>{
   setisLoading(true)
   try{
+    
     const s1 = await checkSignIn()
     if(s1!=1) navigate("/")
     const units = await unitBalance()

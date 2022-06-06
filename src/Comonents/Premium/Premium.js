@@ -39,6 +39,7 @@ function Premium() {
 
     const handleBuy= async()=>{
       setisLoading(true)
+      if(Bunit1==90) return alert('Your limit has been reached')
      try{
         await buyToken()
         alert(" Succefully bought 1 UNIT")
