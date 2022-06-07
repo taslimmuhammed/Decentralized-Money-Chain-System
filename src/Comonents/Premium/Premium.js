@@ -8,12 +8,14 @@ Modal.setAppElement("#root");
 function Premium() {
     let y=0;
     const navigate = useNavigate()
-    const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount,getReferanceProfit} = useContext(EthersContext)
+    const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount,getReferanceProfit,referanceData} = useContext(EthersContext)
     const [Units, setUnits] = useState(0)
     const [BUnits, setBUnits] = useState(0)
     const [Bunit1, setBunit1] = useState(0)
     const [ReferalBalance, setReferalBalance] = useState(0);
     const [isLoading, setisLoading] = useState(false)
+    const [RFData, setRFData] = useState()
+    const [In1, setIn1] = useState()
     const initiaor= async()=>{
         setisLoading(true)
         try{
@@ -23,12 +25,11 @@ function Premium() {
             setUnits(units)
             let  refer = await getReferanceProfit()
             refer = refer/1000000
-            refer = refer.toFixed(2);
+            refer = refer.toFixed(2)
             setReferalBalance(refer)
             const bunits = await unitCount()
             let balance = bunits- units/100
-           if(balance<0) balance = 0;
-            balance = balance.toFixed(2);
+            balance = balance-balance%1
             setBUnits(balance)
             setBunit1(bunits)
         }catch(e){
@@ -36,13 +37,18 @@ function Premium() {
         }
         setisLoading(false)
     }
+    const getReferenceDetails=  async()=>{
+      console.log("hello")
+     const x = await referanceData()
+     setRFData(x)
+    }
 
     const handleBuy= async()=>{
       setisLoading(true)
-      if(Bunit1==90) return alert('Your limit has been reached')
+      if(Bunit1+In1>=90) return alert('Beyond Your Limit')
      try{
-        await buyToken()
-        alert(" Succefully bought 1 UNIT")
+        await buyToken(In1)
+        alert( `Succefully bought ${In1} UNIT`)
         initiaor()
      } catch(e){
      console.log(e)
@@ -65,14 +71,19 @@ function Premium() {
 }
 
     useEffect(() => {
+      getReferenceDetails()
       initiaor()
-    }, [y])
+    }, [])
 
 
  const [isOpen, setIsOpen] = useState(false);
+ const [isOpen1, setIsOpen1] = useState(false);
 
   function toggleModal() {
     setIsOpen(!isOpen);
+  }
+  function toggleModal1() {
+    setIsOpen1(!isOpen1);
   }
     
   return isLoading? <Loader/>:
@@ -86,24 +97,24 @@ function Premium() {
         <div className='p_bottom'>
           <div className='p_details'>
               <div>
-              <div className='sub_head'>Buy Unit</div>
-            <div className='sub_sub'> {Units/100}/90</div>
+              <div className='sub_head'>Purchase</div>
+            <div className='sub_sub'> {Bunit1-BUnits}/{BUnits}</div>
               </div>
             
              <div>
-             <div className='sub_head'>Out Unit</div>
+             <div className='sub_head'>Balance</div>
             <div className='sub_sub'>{BUnits}/{Bunit1}</div>
              </div>
             
             </div>
-            <div className='sub_head'>Price of Unit</div>
-            <div className='sub_sub'>10 USDt (*polygon chain)</div>
+            <div className='sub_head'>Benifit Sharing</div>
+            <div className='sub_sub'>2 USDt (*polygon chain)</div>
 
             <div className='sub_head'>Reference Profit</div>
-            <div className='sub_sub'>{ReferalBalance}/USDT</div>
+            <div className='sub_sub'>{ReferalBalance} USDT</div>
               
             <div className='p_buttons' >
-            <button className="button-9" role="button" onClick={handleBuy}>Purchase</button>
+            <button className="button-9" role="button" onClick={toggleModal1}>Purchase</button>
             <button className="button-9" role="button" onClick={handleLot}>Start</button>
             </div>
             <div className='p_rec'>Recommend Members</div>
@@ -111,35 +122,35 @@ function Premium() {
             <div className='p_cards'>
                 <div className='p_card'>
                     <div className='p_card_head'>Level 1</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[0]: "xxx"}</div>
 
                     <div className='p_card_head'>Level 2</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[1]: "xxx"}</div>
 
                     <div className='p_card_head'>Level 3</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[2]: "xxx"}</div>
                 </div>
 
                 <div className='p_card'>
                     <div className='p_card_head'>Level 4</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[3]: "xxx"}</div>
 
                     <div className='p_card_head'>Level 5</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[4]: "xxx"}</div>
 
                     <div className='p_card_head'>Level 6</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[5]: "xxx"}</div>
                 </div>
 
                 <div className='p_card'>
                     <div className='p_card_head'>Level 7</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[6]: "xxx"}</div>
 
                     <div className='p_card_head'>Level 8</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[7]: "xxx"}</div>
 
                     <div className='p_card_head'>Level 9</div>
-                    <div className='p_card_sub'>xxx</div>
+                    <div className='p_card_sub'>{RFData? RFData[8]: "xxx"}</div>
                 </div>
             </div>
           
@@ -158,9 +169,22 @@ function Premium() {
 >
   <div className='md_1'>Share the same website link to your friends and enter the followong referal Id to earn refferal bonus.</div>
   <div className='md_2'>Your referal Id: {currentAccount}</div>
-  <button onClick={toggleModal} className="md_3">Close modal</button>
+  <button onClick={toggleModal} className="md_3">Close X</button>
 </Modal>
-        {/* </div> */}
+
+<Modal
+  isOpen={isOpen1}
+  onRequestClose={toggleModal1}
+  contentLabel="My dialog"
+  className="mymodal"
+  overlayClassName="myoverlay"
+  closeTimeoutMS={500}
+>
+  <div className='md_1'>Enter the amount of tokens (max {90-Bunit1})</div>
+  <input className='md_2' onChange={(e)=>{setIn1(e.target.value)}} type="number"></input>
+  <div onClick={handleBuy} className="button-9"> Buy Token</div>
+  <button onClick={toggleModal1} className="md_3">Close X</button>
+</Modal>
     </div>
   
 }

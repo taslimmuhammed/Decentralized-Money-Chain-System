@@ -1,6 +1,12 @@
 export const abi =[
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
 		"name": "buyUnitToken",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -150,6 +156,11 @@ export const abi =[
 				"internalType": "bool",
 				"name": "_active",
 				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
 			}
 		],
 		"name": "checkUserLimit",
@@ -174,9 +185,56 @@ export const abi =[
 		"name": "getMyRefferals",
 		"outputs": [
 			{
-				"internalType": "address[]",
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "lvl1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl2",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl3",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl4",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl5",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl6",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl7",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl8",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lvl9",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct GCU.rf",
 				"name": "",
-				"type": "address[]"
+				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
@@ -220,19 +278,54 @@ export const abi =[
 				"internalType": "address",
 				"name": "",
 				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
 			}
 		],
 		"name": "myRefferals",
 		"outputs": [
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "lvl1",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl2",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl3",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl4",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl5",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl6",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl7",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl8",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lvl9",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",

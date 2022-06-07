@@ -14,7 +14,7 @@ function General() {
     setisLoading(true)
     if(Bunit1==1) return alert('Your limit has been reached')
    try{
-      await buyToken()
+      await buyToken("1")
       alert(" Succefully bought 1 UNIT")
       initiaor()
    } catch(e){
