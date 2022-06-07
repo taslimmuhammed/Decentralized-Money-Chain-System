@@ -8,7 +8,7 @@ Modal.setAppElement("#root");
 function Premium() {
     let y=0;
     const navigate = useNavigate()
-    const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount,getReferanceProfit,referanceData} = useContext(EthersContext)
+    const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount,getReferanceProfit,referanceData,rBenifit} = useContext(EthersContext)
     const [Units, setUnits] = useState(0)
     const [BUnits, setBUnits] = useState(0)
     const [Bunit1, setBunit1] = useState(0)
@@ -16,6 +16,7 @@ function Premium() {
     const [isLoading, setisLoading] = useState(false)
     const [RFData, setRFData] = useState()
     const [In1, setIn1] = useState()
+    const [Ben, setBen] = useState(0)
     const initiaor= async()=>{
         setisLoading(true)
         try{
@@ -32,6 +33,9 @@ function Premium() {
             balance = balance-balance%1
             setBUnits(balance)
             setBunit1(bunits)
+            let benifit =await rBenifit()
+            benifit = benifit*2
+            setBen(benifit)
         }catch(e){
             console.log(e)
         }
@@ -45,6 +49,7 @@ function Premium() {
 
     const handleBuy= async()=>{
       setisLoading(true)
+      alert("Do not close during transaction, Only close or refresh after two confirmations from metamask")
       if(Bunit1+In1>=90) return alert('Beyond Your Limit')
      try{
         await buyToken(In1)
@@ -98,7 +103,7 @@ function Premium() {
           <div className='p_details'>
               <div>
               <div className='sub_head'>Purchase</div>
-            <div className='sub_sub'> {Bunit1-BUnits}/{BUnits}</div>
+            <div className='sub_sub'>{Bunit1}/90</div>
               </div>
             
              <div>
@@ -108,7 +113,7 @@ function Premium() {
             
             </div>
             <div className='sub_head'>Benifit Sharing</div>
-            <div className='sub_sub'>2 USDt (*polygon chain)</div>
+            <div className='sub_sub'>{2*Ben} USDt (*polygon chain)</div>
 
             <div className='sub_head'>Reference Profit</div>
             <div className='sub_sub'>{ReferalBalance} USDT</div>

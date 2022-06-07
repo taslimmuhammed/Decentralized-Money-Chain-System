@@ -7,7 +7,7 @@ export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
 
-  const contractAddress = "0xb8c29D71838e9059A14d235629AA941248eE1919"
+  const contractAddress = "0x0381510b066DEdcc7e197beBc4Dd32F979702e93"
   const usdtContractAddress  =  "0x493e6ad3b3e782db7e056d39253bae2f92bb96b6"
     const [currentAccount, setCurrentAccount] = useState(null);
     const [N, setN] = useState();
@@ -136,6 +136,23 @@ export default function Ethers({children}){
           const accounts = await ethereum.request({method: "eth_accounts"})
           const account  = accounts[0]
           const balance = await contract.unitBalance(account)
+          const s2 =  parseInt(balance._hex, 16)
+          return s2
+        }catch(e){
+          console.log(e)
+          alert(e)
+        }
+      }
+      const rBenifit = async()=>{
+        try{
+          const { ethereum } = window
+          const provider = new ethers.providers.Web3Provider(ethereum)
+          const signer = provider.getSigner()
+          
+          const contract = new ethers.Contract(contractAddress ,abi ,signer)
+          const accounts = await ethereum.request({method: "eth_accounts"})
+          const account  = accounts[0]
+          const balance = await contract.benifit(account)
           const s2 =  parseInt(balance._hex, 16)
           return s2
         }catch(e){
@@ -321,7 +338,7 @@ export default function Ethers({children}){
 
 
     return(
-        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner}}>
+        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit}}>
           {children}
         </EthersContext.Provider>
     )
