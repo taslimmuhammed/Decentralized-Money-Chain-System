@@ -93,7 +93,6 @@ export default function Ethers({children}){
           return balance
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
       const getReferanceProfit= async()=>{
@@ -109,7 +108,6 @@ export default function Ethers({children}){
           return s2
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
 
@@ -123,7 +121,6 @@ export default function Ethers({children}){
           return balance
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
       const unitBalance = async()=>{
@@ -140,7 +137,6 @@ export default function Ethers({children}){
           return s2
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
       const rBenifit = async()=>{
@@ -157,7 +153,6 @@ export default function Ethers({children}){
           return s2
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
 
@@ -176,7 +171,6 @@ export default function Ethers({children}){
           return s2
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
 
@@ -191,7 +185,6 @@ export default function Ethers({children}){
           return s2
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
 
@@ -258,7 +251,7 @@ export default function Ethers({children}){
           const contract = new ethers.Contract(contractAddress, abi,signer)
           const chlmt = await contract.changeLimit(limit)
           await chlmt.wait()
-          alert("ownership transfered succefully")
+          alert("Limit changed succefully")
         }catch(e){
           console.log(e)
           alert(e)
