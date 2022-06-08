@@ -45,8 +45,8 @@ const initiaor= async()=>{
     const s1 = await checkSignIn()
     if(s1!=1) navigate("/")
     const units = await unitBalance()
-    setUnits(units)
-    const bunits = await unitCount()
+    setUnits(units[0])
+    const bunits = units[1]
     let balance = bunits- units/100
     setBUnits(balance)
     setBunit1(bunits)
