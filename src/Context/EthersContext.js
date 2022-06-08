@@ -132,9 +132,20 @@ export default function Ethers({children}){
           const contract = new ethers.Contract(contractAddress ,abi ,signer)
           const accounts = await ethereum.request({method: "eth_accounts"})
           const account  = accounts[0]
-          const balance = await contract.unitBalance(account)
-          const s2 =  parseInt(balance._hex, 16)
-          return s2
+          let balance = await contract.unitBalance(account)
+          let s2 =  parseInt(balance._hex, 16)
+          let arr = [s2];
+          let balance1 = await contract.unitCount(account)
+          let s21 =  parseInt(balance1._hex, 16)
+          arr.push(s21)
+          const balance2 = await contract.benifit(account)
+          const s22 =  parseInt(balance2._hex, 16)
+          arr.push(s22)
+          console.log(arr)
+          const balance3 = await contract.referenceProfit(account)
+          const s23 =  parseInt(balance3._hex, 16)
+          arr.push(s23)
+        return arr
         }catch(e){
           console.log(e)
         }
@@ -214,6 +225,7 @@ export default function Ethers({children}){
           const transfer = await contract.buyUnitToken(amount)
           await transfer.wait()
           console.log("transferred")
+          console.log(amount)
       }
      
 
@@ -288,7 +300,6 @@ export default function Ethers({children}){
           return arr
         }catch(e){
           console.log(e)
-          alert(e)
         }
       }
       

@@ -8,7 +8,7 @@ Modal.setAppElement("#root");
 function Premium() {
     let y=0;
     const navigate = useNavigate()
-    const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount,getReferanceProfit,referanceData,rBenifit} = useContext(EthersContext)
+    const {checkSignIn,unitBalance,buyToken,enterGame, currentAccount,referanceData} = useContext(EthersContext)
     const [Units, setUnits] = useState(0)
     const [BUnits, setBUnits] = useState(0)
     const [Bunit1, setBunit1] = useState(0)
@@ -23,17 +23,17 @@ function Premium() {
             const s1 = await checkSignIn()
             if(s1!=2) navigate("/")
             const units = await unitBalance()
-            setUnits(units)
-            let  refer = await getReferanceProfit()
+            setUnits(units[0])
+            let  refer = units[3]
             refer = refer/1000000
             refer = refer.toFixed(2)
             setReferalBalance(refer)
-            const bunits = await unitCount()
+            const bunits = units[1]
             let balance = bunits- units/100
             balance = balance-balance%1
             setBUnits(balance)
             setBunit1(bunits)
-            let benifit =await rBenifit()
+            let benifit =units[2]
             benifit = benifit*2
             setBen(benifit)
         }catch(e){
