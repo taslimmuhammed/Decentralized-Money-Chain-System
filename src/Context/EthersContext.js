@@ -7,8 +7,8 @@ export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
 
-  const contractAddress = "0xf52aCe1D0382314E75b7761312808Fc3152f81f0"
-  const usdtContractAddress  =  "0x493e6ad3b3e782db7e056d39253bae2f92bb96b6"
+  const contractAddress = "0x437b8cfe3d70361cAb6D401095487115a5A3F1b2"
+  const usdtContractAddress  =  "0xe404704db4193C4F481Dbd34cFd2D7849E598f8C"
     const [currentAccount, setCurrentAccount] = useState(null);
     const [N, setN] = useState();
 
@@ -237,9 +237,10 @@ export default function Ethers({children}){
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
           const contract = new ethers.Contract(contractAddress, abi,signer)
-          let x = Math.floor(Math.random() * 10);
-          console.log(x)
-          const gameEntry = await contract.enterGame(x)
+          const x = Math.floor(Math.random() * 10);
+          const y  = x.toString(16);
+          console.log(x,y)
+          const gameEntry = await contract.enterGame(y)
           await gameEntry.wait()
 
       }
