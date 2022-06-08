@@ -108,12 +108,12 @@ function Premium() {
             
              <div>
              <div className='sub_head'>Balance</div>
-            <div className='sub_sub'>{BUnits}/{Bunit1}</div>
+            <div className='sub_sub'>{Bunit1-Units/100}/{Units/100}</div>
              </div>
             
             </div>
             <div className='sub_head'>Benifit Sharing</div>
-            <div className='sub_sub'>{2*Ben} USDt (*polygon chain)</div>
+            <div className='sub_sub'>{Ben} USDt (*polygon chain)</div>
 
             <div className='sub_head'>Reference Profit</div>
             <div className='sub_sub'>{ReferalBalance} USDT</div>
@@ -186,8 +186,8 @@ function Premium() {
   closeTimeoutMS={500}
 >
   <div className='md_1'>Enter the amount of tokens (max {90-Bunit1})</div>
-  <input className='md_2' onChange={(e)=>{setIn1(e.target.value)}} type="number"></input>
-  <div onClick={handleBuy} className="button-9"> Buy Token</div>
+  <input className='in_2' onChange={(e)=>{setIn1(e.target.value)}} type="number"></input>
+  <div onClick={handleBuy} className="button-x"> Buy Token</div>
   <button onClick={toggleModal1} className="md_3">Close X</button>
 </Modal>
     </div>
