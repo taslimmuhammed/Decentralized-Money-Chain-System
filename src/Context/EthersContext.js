@@ -7,8 +7,8 @@ export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
 
-  const contractAddress = "0x437b8cfe3d70361cAb6D401095487115a5A3F1b2"
-  const usdtContractAddress  =  "0xe404704db4193C4F481Dbd34cFd2D7849E598f8C"
+  const contractAddress = "0x4199E7F8bBd6F170e56d1929c32eb178a6A1ea1E"
+  const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
     const [currentAccount, setCurrentAccount] = useState(null);
     const [N, setN] = useState();
 
@@ -262,6 +262,7 @@ export default function Ethers({children}){
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
           const contract = new ethers.Contract(contractAddress, abi,signer)
+          
           const chlmt = await contract.changeLimit(limit)
           await chlmt.wait()
           alert("Limit changed succefully")
@@ -337,7 +338,7 @@ export default function Ethers({children}){
     useEffect(() => {
       checkIfWalletIsConnect();
       // changeNetwork()
-      // getN()
+       getN()
     }, []);
 
 

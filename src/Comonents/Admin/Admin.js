@@ -9,13 +9,13 @@ const [isLoading, setisLoading] = useState(false)
 const { checkOwner, changeOwner, changeLimit,limitCount} = useContext(EthersContext)
 const [Address, setAddress] = useState()
 const [Limit, setLimit] = useState()
-
+const [Limit2, setLimit2] = useState()
 const initiator = async()=>{
     setisLoading(true)
     try{
      const v = await checkOwner()
      const l1  = await limitCount()
-     setLimit(l1)
+     setLimit2(l1)
      if(v!=true) {
          alert("Not Authorized")
          navigate('/')
@@ -52,12 +52,12 @@ useEffect(() => {
       <div className='h_head'> Admin Panel</div>
       <div className='h_box  text-white'>
           <div> Total number of tokens Supplied:</div>
-          <div className='text-green-400'>{Limit}</div>
+          <div className='text-green-400'>{Limit2}</div>
           <div>Transfer ownership</div>
-          <input placeHolder="new Address" onChange={(e)=>{setAddress(e.target.value)}}></input>
+          <input placeHolder="new Address" className='text-black' onChange={(e)=>{setAddress(e.target.value)}}></input>
           <button class="button-8" role="button" onClick={changeOwner1}>Change Owner</button>
           <div>Change Unit max limit</div>
-          <input placeHolder="new Limit" onChange={(e)=>{setLimit(e.target.value)}}></input>
+          <input placeHolder="new Limit" className='text-black' onChange={(e)=>{setLimit(e.target.value)}}></input>
           <button class="button-8" role="button" onClick={changeLimit1}>Change Limit</button>
       </div>
   </div>
