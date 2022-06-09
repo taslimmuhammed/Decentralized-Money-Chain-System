@@ -13,7 +13,8 @@ function App() {
 
   return (
     <div className="main-screen">
-  
+     <div className='l_head'>Global Community Union</div>
+      <div className='l_liner'></div>
       <Router>
         <Routes>
           <Route path='/' exact element={<HomePage/>}></Route>
@@ -23,7 +24,8 @@ function App() {
           <Route path='/admin' exact element={<Admin/>}></Route>   
         </Routes>
       </Router>
-
+      <div className='l_Bottom margin'>&#169;Global Community Union</div>
+      
     </div>
   );
 }

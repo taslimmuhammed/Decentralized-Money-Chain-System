@@ -17,9 +17,8 @@ function Landing() {
   }, [currentAccount])
   return (
     <div className='text-white landing_main'>
-      <div className='l_welcome'>Welcome to</div>
-      <div className='l_head'>Global Community Union</div>
-      <div className='l_liner'></div>
+      <div className='l_welcome'>Welcome,</div>
+      
       <div className='l_bottom'>
         <div className='connect_btn' onClick={async ()=>{
         await connectWallet()

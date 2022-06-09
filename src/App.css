@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(rgb(0, 0, 0), rgb(75, 75, 73));
@@ -100,7 +101,9 @@ background: linear-gradient(130deg,  #9945FF 0%, #14F195 100%); */
   padding: 20px;
   font-family:'Courier New', Courier, monospace
 }
-
+.margin{
+  margin-top: 150px
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
