@@ -209,13 +209,14 @@ export default function Ethers({children}){
         const contract = new ethers.Contract(usdtContractAddress ,usdtAbi ,signer)
         let _amount = parseInt(amount)
         _amount = _amount * 10000000
-        _amount = _amount+""
+        const amount  = _amount.toString(16);
         const transfer = await contract.transfer(contractAddress,_amount)
         await transfer.wait()
         return transfer
       }
 
-      const buyToken= async(amount)=>{
+      const buyToken= async(x)=>{
+          const amount  = x.toString(16);
           const transaction = await sendUSDTtoContract(amount)
           const { ethereum } = window
           const provider = new ethers.providers.Web3Provider(ethereum)
