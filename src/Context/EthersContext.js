@@ -79,7 +79,7 @@ export default function Ethers({children}){
           const transfer = await contract.signIn(address, active)
           await transfer.wait()
         }catch(e){
-      alert(e)
+      alert(e.data.message)
         }
       }
 
@@ -254,7 +254,7 @@ export default function Ethers({children}){
           await contract.changeOwner(address)
         }catch(e){
           console.log(e)
-          alert(e)
+          alert(e.data.message)
         }
       }
       const changeLimit= async(limit)=>{
@@ -269,7 +269,7 @@ export default function Ethers({children}){
           alert("Limit changed succefully")
         }catch(e){
           console.log(e)
-          alert(e)
+          alert(e.data.message)
         }
       }
       // const changeNetwork = async () => {
