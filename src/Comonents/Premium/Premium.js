@@ -57,8 +57,9 @@ function Premium() {
         initiaor()
      } catch(e){
      console.log(e)
-      alert("Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon")
-     }
+      // alert("Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon")
+      alert(e.data.message)
+    }
      setisLoading(false)
   }
 
@@ -70,7 +71,7 @@ function Premium() {
       initiaor()
    } catch(e){
    console.log(e)
-   alert(e)
+   alert(e.data.message)
    }
    setisLoading(false)
 }

@@ -9,6 +9,9 @@ export default function Ethers({children}){
 
   const contractAddress = "0x23A75e3a63eAe28c7001e24ccb233C2161CbCF1E"
   const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+  // const contractAddress = "0x2746Cd5A251DB9cdBFd3DfAcB5CB09F23bf7C8b2"
+  // const usdtContractAddress  =  "0xE08A2203C9fFCeD117BD1c39B896Ca41FE739E07"
+
     const [currentAccount, setCurrentAccount] = useState(null);
     const [N, setN] = useState();
 
@@ -79,7 +82,8 @@ export default function Ethers({children}){
           const transfer = await contract.signIn(address, active)
           await transfer.wait()
         }catch(e){
-      alert(e.data.message)
+      // alert(e.data.message)
+      console.log(e)
         }
       }
 
@@ -108,6 +112,7 @@ export default function Ethers({children}){
           return s2
         }catch(e){
           console.log(e)
+
         }
       }
 
@@ -202,12 +207,12 @@ export default function Ethers({children}){
 
 
 
-      const sendUSDTtoContract= async(amount)=>{
+      const sendUSDTtoContract= async(amnt)=>{
         const { ethereum } = window
         const provider = new ethers.providers.Web3Provider(ethereum)
         const signer = provider.getSigner()
         const contract = new ethers.Contract(usdtContractAddress ,usdtAbi ,signer)
-        let _amount = parseInt(amount)
+        let _amount = parseInt(amnt)
         _amount = _amount * 10000000
         const amount  = _amount.toString(16);
         const transfer = await contract.transfer(contractAddress,_amount)
