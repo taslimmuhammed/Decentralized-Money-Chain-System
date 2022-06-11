@@ -248,10 +248,7 @@ export default function Ethers({children}){
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
           const contract = new ethers.Contract(contractAddress, abi,signer)
-          const x = Math.floor(Math.random() * 10);
-          const y  = x.toString(16);
-          console.log(x,y)
-          const gameEntry = await contract.enterGame(y)
+          const gameEntry = await contract.enterGame()
           await gameEntry.wait()
 
       }
