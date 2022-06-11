@@ -7,9 +7,9 @@ export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
 
-  const contractAddress = "0x01037E4279B091fa5A1E8c5A5b6F215056E17f86"
-  const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
-  // const contractAddress = "0x2746Cd5A251DB9cdBFd3DfAcB5CB09F23bf7C8b2"
+   const contractAddress = "0x01037E4279B091fa5A1E8c5A5b6F215056E17f86"
+   const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+  // const contractAddress = "0x04c4245317F899Ba32ccFE305299311aeaFe3554"
   // const usdtContractAddress  =  "0xE08A2203C9fFCeD117BD1c39B896Ca41FE739E07"
 
     const [currentAccount, setCurrentAccount] = useState(null);
@@ -144,17 +144,18 @@ export default function Ethers({children}){
           let balance1 = await contract.unitCount(account)
           let s21 =  parseInt(balance1._hex, 16)
           let arr = [s21];
-          arr.push(s21)
-          const balance2 = await contract.benifit(account)
-          const s22 =  parseInt(balance2._hex, 16)
+          const benifit = await contract.benifit(account)
+          const s22 =  parseInt(benifit._hex, 16)
           arr.push(s22)
-          console.log(arr)
+          
           const balance3 = await contract.referenceProfit(account)
           const s23 =  parseInt(balance3._hex, 16)
           arr.push(s23)
           const balance4 = await contract.IN(account)
           const s24 =  parseInt(balance4._hex, 16)
           arr.push(s24)
+           console.log(arr)
+          // arr.push(s24)
         return arr
         }catch(e){
           console.log(e)
@@ -301,6 +302,7 @@ export default function Ethers({children}){
           const account  = accounts[0]
           
           const referals = await contract.myRefferals(account)
+          console.log(referals)
           let arr=[];
           for(let i=0; i<9;i++){
             const s1 = await referals[i]._hex
@@ -346,7 +348,7 @@ export default function Ethers({children}){
     useEffect(() => {
       checkIfWalletIsConnect();
       // changeNetwork()
-       getN()
+      // getN()
     }, []);
 
 
