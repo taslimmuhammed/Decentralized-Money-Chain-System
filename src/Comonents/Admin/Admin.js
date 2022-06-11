@@ -12,18 +12,18 @@ const [Limit, setLimit] = useState()
 const [Limit2, setLimit2] = useState()
 const initiator = async()=>{
     setisLoading(true)
-    // try{
-    //  const v = await checkOwner()
-    //  const l1  = await limitCount()
-    //  setLimit2(l1)
-    //  if(v!=true) {
-    //      alert("Not Authorized")
-    //      navigate('/')
-    //  }
-    // }catch(e){
-    //     console.log(e)
-    //     alert(e)
-    // }
+    try{
+     const v = await checkOwner()
+     const l1  = await limitCount()
+     setLimit2(l1)
+     if(v!=true) {
+         alert("Not Authorized")
+         navigate('/')
+     }
+    }catch(e){
+        console.log(e)
+        alert(e)
+    }
     setisLoading(false)
 }
 
