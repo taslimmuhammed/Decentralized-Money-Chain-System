@@ -8,11 +8,11 @@ function General() {
   const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount} = useContext(EthersContext)
   const [Units, setUnits] = useState(0)
   const [BUnits, setBUnits] = useState(0)
-  const [Bunit1, setBunit1] = useState(0)
+  const [In, setIn] = useState(0)
   const [isLoading, setisLoading] = useState(false)
   const handleBuy= async()=>{
     setisLoading(true)
-    if(Bunit1==1) return alert('Your limit has been reached')
+    if(Units==1) return alert('Your limit has been reached')
    try{
       await buyToken("1")
       alert(" Succefully bought 1 UNIT")
@@ -46,10 +46,8 @@ const initiaor= async()=>{
     if(s1!=1) navigate("/")
     const units = await unitBalance()
     setUnits(units[0])
-    const bunits = units[1]
-    let balance = bunits- units/100
-    setBUnits(balance)
-    setBunit1(bunits)
+    setBUnits(units[1])
+    setIn(units[3])
   }catch(e){
       console.log(e)
   }
@@ -70,10 +68,10 @@ useEffect(() => {
   <div className='p_bottom'>
 
       <div className='sub_head'>Buy Unit</div>
-      <div className='sub_sub'>{Units/100}/1</div>
+      <div className='sub_sub'>{Units}/1</div>
     
       <div className='sub_head'>Out Unit</div>
-      <div className='sub_sub'>{BUnits}/{Bunit1}</div>
+      <div className='sub_sub'>{BUnits}/{In}</div>
 
       <div className='sub_head'>Price of 1 Unit</div>
           <div className='sub_sub'>10 USDt (*polygon chain)</div>

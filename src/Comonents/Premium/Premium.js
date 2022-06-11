@@ -30,7 +30,7 @@ function Premium() {
             setReferalBalance(refer)
             const bunits = units[0]
             setBunit1(bunits)
-            let benifit =units[2]
+            let benifit =units[1]
             benifit = benifit*2
             setBen(benifit)
         }catch(e){
