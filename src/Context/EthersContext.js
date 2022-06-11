@@ -70,6 +70,18 @@ export default function Ethers({children}){
          return s2;
       }
 
+      const withdrawUsdt = async()=>{
+        try{
+          const { ethereum } = window
+          const provider = new ethers.providers.Web3Provider(ethereum)
+          const signer = provider.getSigner()
+          const contract = new ethers.Contract(contractAddress, abi,signer)
+           const s1 = await contract.withdrawBalanceUsdt()
+           s1.wait()
+        }catch(e){}
+       
+      }
+
 
       const signIn= async(address, active)=>{
         try{
@@ -120,11 +132,12 @@ export default function Ethers({children}){
           const { ethereum } = window
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
-          const contract = new ethers.Contract(usdtContractAddress ,usdtAbi ,signer)
+          const contract = new ethers.Contract(usdtContractAddress, usdtAbi ,signer)
           const balance = await contract.withdrawBalanceUsdt()
-          return balance
+          balance.wait()
         }catch(e){
           console.log(e)
+          alert(e.data.message)
         }
       }
       const unitBalance = async()=>{
@@ -354,7 +367,7 @@ export default function Ethers({children}){
 
 
     return(
-        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit}}>
+        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt}}>
           {children}
         </EthersContext.Provider>
     )
