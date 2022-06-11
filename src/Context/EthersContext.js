@@ -7,10 +7,9 @@ export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
 
-   const contractAddress = "0x01037E4279B091fa5A1E8c5A5b6F215056E17f86"
-   const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
-  // const contractAddress = "0x04c4245317F899Ba32ccFE305299311aeaFe3554"
-  // const usdtContractAddress  =  "0xE08A2203C9fFCeD117BD1c39B896Ca41FE739E07"
+
+  const contractAddress = "0x3f05EF06d2f634D796953B823aA79d39D89402D7"
+  const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
 
     const [currentAccount, setCurrentAccount] = useState(null);
     const [N, setN] = useState();
@@ -220,15 +219,19 @@ export default function Ethers({children}){
         const contract = new ethers.Contract(usdtContractAddress ,usdtAbi ,signer)
         let _amount = parseInt(amnt)
         _amount = _amount * 10000000
-        const amount  = _amount.toString(16);
-        const transfer = await contract.transfer(contractAddress,_amount)
+        let amount  = ethers.utils.hexlify(_amount)
+
+        console.log(amount, "sendusdt")
+        const transfer = await contract.transfer(contractAddress,amount)
         await transfer.wait()
-        return transfer
+        return true
       }
 
       const buyToken= async(x)=>{
-          const amount  = x.toString(16);
-          const transaction = await sendUSDTtoContract(amount)
+        const transaction = await sendUSDTtoContract(x)
+          let y = parseInt(x)
+          let amount  = ethers.utils.hexlify(y)
+          console.log(amount, "before")
           const { ethereum } = window
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
@@ -237,7 +240,6 @@ export default function Ethers({children}){
           const transfer = await contract.buyUnitToken(amount)
           await transfer.wait()
           console.log("transferred")
-          console.log(amount)
       }
      
 
@@ -348,7 +350,7 @@ export default function Ethers({children}){
     useEffect(() => {
       checkIfWalletIsConnect();
       // changeNetwork()
-      // getN()
+       getN()
     }, []);
 
 

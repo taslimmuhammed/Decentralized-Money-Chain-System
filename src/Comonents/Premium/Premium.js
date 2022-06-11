@@ -17,6 +17,9 @@ function Premium() {
     const [RFData, setRFData] = useState()
     const [In1, setIn1] = useState()
     const [Ben, setBen] = useState(0)
+    
+ const [isOpen, setIsOpen] = useState(false);
+ const [isOpen1, setIsOpen1] = useState(false);
     const initiaor= async()=>{
         setisLoading(true)
         try{
@@ -52,6 +55,7 @@ function Premium() {
         await buyToken(In1)
         alert( `Succefully bought ${In1} UNIT`)
         initiaor()
+        setIsOpen1(false)
      } catch(e){
      console.log(e)
       // alert("Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon")
@@ -79,8 +83,6 @@ function Premium() {
     }, [])
 
 
- const [isOpen, setIsOpen] = useState(false);
- const [isOpen1, setIsOpen1] = useState(false);
 
   function toggleModal() {
     setIsOpen(!isOpen);
