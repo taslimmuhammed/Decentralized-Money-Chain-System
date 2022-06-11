@@ -7,7 +7,7 @@ export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
 
-  const contractAddress = "0x23A75e3a63eAe28c7001e24ccb233C2161CbCF1E"
+  const contractAddress = "0x01037E4279B091fa5A1E8c5A5b6F215056E17f86"
   const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
   // const contractAddress = "0x2746Cd5A251DB9cdBFd3DfAcB5CB09F23bf7C8b2"
   // const usdtContractAddress  =  "0xE08A2203C9fFCeD117BD1c39B896Ca41FE739E07"
@@ -81,8 +81,9 @@ export default function Ethers({children}){
           const contract = new ethers.Contract(contractAddress ,abi ,signer)
           const transfer = await contract.signIn(address, active)
           await transfer.wait()
+          alert("Sign In succeful, if your are not redirected , refresh after few minutes")
         }catch(e){
-      // alert(e.data.message)
+      alert(e.data.message)
       console.log(e)
         }
       }
@@ -137,11 +138,12 @@ export default function Ethers({children}){
           const contract = new ethers.Contract(contractAddress ,abi ,signer)
           const accounts = await ethereum.request({method: "eth_accounts"})
           const account  = accounts[0]
-          let balance = await contract.unitBalance(account)
-          let s2 =  parseInt(balance._hex, 16)
-          let arr = [s2];
+          // let balance = await contract.unitBalance(account)
+          // let s2 =  parseInt(balance._hex, 16)
+         
           let balance1 = await contract.unitCount(account)
           let s21 =  parseInt(balance1._hex, 16)
+          let arr = [s21];
           arr.push(s21)
           const balance2 = await contract.benifit(account)
           const s22 =  parseInt(balance2._hex, 16)
@@ -150,6 +152,9 @@ export default function Ethers({children}){
           const balance3 = await contract.referenceProfit(account)
           const s23 =  parseInt(balance3._hex, 16)
           arr.push(s23)
+          const balance4 = await contract.IN(account)
+          const s24 =  parseInt(balance4._hex, 16)
+          arr.push(s24)
         return arr
         }catch(e){
           console.log(e)

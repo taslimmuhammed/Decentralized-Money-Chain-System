@@ -23,15 +23,12 @@ function Premium() {
             const s1 = await checkSignIn()
             if(s1!=2) navigate("/")
             const units = await unitBalance()
-            setUnits(units[0])
-            let  refer = units[3]
+             setUnits(units[3])
+            let  refer = units[2]
             refer = refer/1000000
             refer = refer.toFixed(2)
             setReferalBalance(refer)
-            const bunits = units[1]
-            let balance = bunits- units/100
-            balance = balance-balance%1
-            setBUnits(balance)
+            const bunits = units[0]
             setBunit1(bunits)
             let benifit =units[2]
             benifit = benifit*2
@@ -109,7 +106,7 @@ function Premium() {
             
              <div>
              <div className='sub_head'>Balance</div>
-            <div className='sub_sub'>{Bunit1-Units/100}/{Units/100}</div>
+            <div className='sub_sub'>{Ben/2}/{Units}</div>
              </div>
             
             </div>
