@@ -8,7 +8,7 @@ const {ethereum} = window
 export default function Ethers({children}){
 
 
-  const contractAddress = "0x09C55dAD09b5a9fE2485D8dDcbb9aBa813864488"
+  const contractAddress = "0xe6Df26585fB86BB03CF082b73107e1DCeB9Ea293"
   const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
 
     const [currentAccount, setCurrentAccount] = useState(null);
