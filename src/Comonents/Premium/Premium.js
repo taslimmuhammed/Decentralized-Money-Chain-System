@@ -112,7 +112,7 @@ function Premium() {
              </div>
             
             </div>
-            <div className='sub_head'>Benifit Sharing</div>
+            <div className='sub_head'>Benefit Sharing</div>
             <div className='sub_sub'>{Ben} USDt | {Ben/2} Units</div>
 
             <div className='sub_head'>Reference Profit</div>
@@ -172,8 +172,11 @@ function Premium() {
   overlayClassName="myoverlay"
   closeTimeoutMS={500}
 >
-  <div className='md_1'>Share the same website link to your friends and enter the followong referal Id to earn refferal bonus.</div>
-  <div className='md_2'>Your referal Id: {currentAccount}</div>
+  <div className='md_1'>
+    <p>open in polygon browser :</p>
+    <p>http://gcu.vercel.app</p>
+    <p>referral id:</p></div>
+  <div className='md_2'>{currentAccount}</div>
   <button onClick={toggleModal} className="md_3">Close X</button>
 </Modal>
 
