@@ -113,7 +113,7 @@ function Premium() {
             
             </div>
             <div className='sub_head'>Benefit Sharing</div>
-            <div className='sub_sub'>{Ben} USDt | {Ben/2} Units</div>
+            <div className='sub_sub'>{Ben}USDt | {Ben/2}Units</div>
 
             <div className='sub_head'>Reference Profit</div>
             <div className='sub_sub'>{ReferalBalance} USDT</div>

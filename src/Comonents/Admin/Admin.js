@@ -73,7 +73,7 @@ useEffect(() => {
           <input placeholder="new Limit" className='text-black' onChange={(e)=>{setLimit(e.target.value)}}></input>
           <button class="button-8" role="button" onClick={changeLimit1}>Change Limit</button>
 
-          <button class="button-8" role="button" onClick={withDr}>WithDraw Balance USDT</button>
+          {/* <button class="button-8" role="button" onClick={withDr}>WithDraw Balance USDT</button> */}
       </div>
   </div>
 }
