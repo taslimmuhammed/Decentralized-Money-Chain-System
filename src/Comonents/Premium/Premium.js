@@ -174,9 +174,9 @@ function Premium() {
 >
   <div className='md_1'>
     <p>open in polygon browser :</p>
-    <p>http://gcu.vercel.app</p>
+    <a href='http://gcu.vercel.app'>http://gcu.vercel.app</a>
     <p>referral id:</p></div>
-  <div className='md_2'>{currentAccount}</div>
+  <div className='md_5'>{currentAccount}</div>
   <button onClick={toggleModal} className="md_3">Close X</button>
 </Modal>
 

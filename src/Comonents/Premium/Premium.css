@@ -220,6 +220,10 @@ font-size: 15px;
 font-size: x-large;
 color: #ccc;
 }
+.md_5{
+  font-size:medium;
+  color: #ccc;
+  }
 .md_3{
   background-color: #FF4742;
   color: #ccc;
