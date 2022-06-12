@@ -8,9 +8,9 @@ const {ethereum} = window
 export default function Ethers({children}){
 
 
-  const contractAddress = "0xC25048f092015A04db925206914b87490126AB62"
-  const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
-
+  const contractAddress = "0x7db73DB0D3D9A57884bDC21cf686181509B892DC"
+   const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+  //const usdtContractAddress  =   "0x0dfFAF868a89f32538bC2B582A859326c5CB5D93"
     const [currentAccount, setCurrentAccount] = useState(null);
 
     const checkIfWalletIsConnect = async () => {
@@ -362,7 +362,7 @@ export default function Ethers({children}){
     useEffect(() => {
       checkIfWalletIsConnect();
       // changeNetwork()
-       getN()
+       //getN()
     }, []);
 
 

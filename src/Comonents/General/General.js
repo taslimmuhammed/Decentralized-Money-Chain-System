@@ -18,7 +18,7 @@ function General() {
       alert(" Succefully bought 1 UNIT")
       initiaor()
    } catch(e){
-   console.log(e)
+   console.log(e.data.message)
    alert("Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon")
    }
    setisLoading(false)
@@ -32,7 +32,7 @@ const handleLot= async()=>{
     initiaor()
  } catch(e){
  console.log(e)
- alert(e)
+ alert(e.data.message)
  }
  setisLoading(false)
 }
