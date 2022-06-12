@@ -108,12 +108,12 @@ function Premium() {
             
              <div>
              <div className='sub_head'>Balance</div>
-            <div className='sub_sub'>{Ben/2}/{Units}</div>
+            <div className='sub_sub'>{Bunit1+Ben/2-Units}</div>
              </div>
             
             </div>
             <div className='sub_head'>Benifit Sharing</div>
-            <div className='sub_sub'>{Ben} USDt (*polygon chain)</div>
+            <div className='sub_sub'>{Ben} USDt | {Ben/2} Units</div>
 
             <div className='sub_head'>Reference Profit</div>
             <div className='sub_sub'>{ReferalBalance} USDT</div>
