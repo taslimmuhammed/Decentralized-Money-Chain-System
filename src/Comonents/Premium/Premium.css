@@ -48,7 +48,7 @@ font-size: 15px;
 }
 .p_details{
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content:space-evenly;
 }
 .sub_head{

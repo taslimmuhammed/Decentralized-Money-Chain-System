@@ -10,7 +10,7 @@ function Home() {
   const [isLoading, setisLoading] = useState(false)
   const [x, setx] = useState()
   const navigate = useNavigate()
-  const {signIn} = useContext(EthersContext)
+  const {signIn,Language} = useContext(EthersContext)
   const handleSubmit= async()=>{
     setisLoading(true)
     try{
@@ -30,22 +30,22 @@ function Home() {
       {
         isLoading?  <Loader/>:
           Selected?      <div>
-          <div className='h_head'>Select Mode</div>
+          <div className='h_head'>{Language[30]}</div>
           <div className='h_box'>
             <div className='h_btn' onClick={()=>{
               setx(true)
               setSelected(false)
-            }}>Active Member</div>
+            }}>{Language[31]}</div>
   
             <div className='h_btn' onClick={()=>{
               setx(false)
               setSelected(false)
-            }}>Passive Member</div>
+            }}>{Language[32]}</div>
           </div>
         </div>:
         <div>
-        <div className='h_head'>Enter Refferal</div>
-         <div className='h_head'>(*optional)</div>
+        <div className='h_head'>{Language[33]}</div>
+         <div className='h_head'>{Language[34]}</div>
          
         <div className='h_box'>
           <input className='h_btn bg-transparent px-1'
@@ -53,7 +53,7 @@ function Home() {
            onChange={(e)=>{
              setrefferalId(e.target.value)
            }}></input>
-          <div className='h_btn' onClick={handleSubmit}>Sign In</div>
+          <div className='h_btn' onClick={handleSubmit}>{Language[35]}</div>
         </div>
       </div>
         

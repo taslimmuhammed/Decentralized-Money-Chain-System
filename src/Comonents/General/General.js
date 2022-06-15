@@ -5,21 +5,21 @@ import { useNavigate } from 'react-router-dom'
 import Loader from '../Loading/Loading'
 function General() {
   const navigate = useNavigate()
-  const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount} = useContext(EthersContext)
+  const {checkSignIn,unitBalance,buyToken,enterGame,unitCount, currentAccount,Language} = useContext(EthersContext)
   const [Units, setUnits] = useState(0)
   const [BUnits, setBUnits] = useState(0)
   const [In, setIn] = useState(0)
   const [isLoading, setisLoading] = useState(false)
   const handleBuy= async()=>{
     setisLoading(true)
-    if(Units==1) return alert('Your limit has been reached')
+    if(Units==1) return alert(Language[17])
    try{
       await buyToken("1")
-      alert(" Succefully bought 1 UNIT")
+      alert(Language[18])
       initiaor()
    } catch(e){
    console.log(e.data.message)
-   alert("Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon")
+   alert(Language[19])
    }
    setisLoading(false)
 }
@@ -28,7 +28,7 @@ const handleLot= async()=>{
   setisLoading(true)
  try{
     await enterGame()
-    alert(" 1 UNIT has been used Lot, if you win your unit balance will increase automatically")
+    alert(Language[20])
     initiaor()
  } catch(e){
  console.log(e)
@@ -59,25 +59,25 @@ useEffect(() => {
 }, [])
   return (
   isLoading?<Loader/>:<div className='p_main'>
-  <div className='p_head'>General Member</div>
+  <div className='p_head'>{Language[21]}</div>
   <div className='Wallet'>
-      <div className='wallet_head'>WALLET ADDRESS</div>
+      <div className='wallet_head'>{Language[22]}</div>
       <div className='wallet_address'>{currentAccount}</div>
   </div>
 
   <div className='p_bottom'>
 
-      <div className='sub_head'>Buy Unit</div>
+      <div className='sub_head'>{Language[23]}</div>
       <div className='sub_sub'>{Units}/1</div>
     
-      <div className='sub_head'>Out Unit</div>
+      <div className='sub_head'>{Language[24]}</div>
       <div className='sub_sub'>{BUnits}/{In}</div>
 
-      <div className='sub_head'>Price of 1 Unit</div>
+      <div className='sub_head'>{Language[25]}</div>
           <div className='sub_sub'>10 USDt (*polygon chain)</div>
       <div className='p_buttons' >
-          <button className="button-9" role="button" onClick={handleBuy}>Purchase</button>
-          <button className="button-9" role="button" onClick={handleLot}>Start</button>
+          <button className="button-9" role="button" onClick={handleBuy}>{Language[26]}</button>
+          <button className="button-9" role="button" onClick={handleLot}>{Language[27]}</button>
           </div>
      
   </div>

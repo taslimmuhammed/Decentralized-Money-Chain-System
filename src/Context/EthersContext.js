@@ -2,12 +2,13 @@ import { ethers } from "ethers";
 import { createContext, useState, useEffect } from "react";
 import { abi } from "../Utils/abi";
 import { usdtAbi } from "../Utils/USDtabi";
-
+import { English } from "../Comonents/Languages/English";
+import { Chinese } from "../Comonents/Languages/Chinese";
 export const EthersContext = createContext(null);
 const {ethereum} = window
 export default function Ethers({children}){
-
-
+  const [Lang, setLang] = useState(true)
+  const [Language, setLanguage] = useState(English)
   const contractAddress = "0x0636FE4e3710d9340e2f20137967f187211EB8F3"
    const usdtContractAddress  =  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
   //const usdtContractAddress  =   "0x0dfFAF868a89f32538bC2B582A859326c5CB5D93"
@@ -365,9 +366,15 @@ export default function Ethers({children}){
        //getN()
     }, []);
 
+    useEffect(() => {
+      if(Lang==true) setLanguage(English)
+      else setLanguage(Chinese)
+    }, [Lang])
+    
+
 
     return(
-        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt}}>
+        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt,Lang, setLang, Language}}>
           {children}
         </EthersContext.Provider>
     )

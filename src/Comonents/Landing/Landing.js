@@ -5,7 +5,7 @@ import { EthersContext } from '../../Context/EthersContext'
 
 function Landing() {
   const navigate = useNavigate()
-  const {connectWallet,currentAccount} = useContext(EthersContext)
+  const {connectWallet,currentAccount,Language} = useContext(EthersContext)
   const checker = async () => {
     if(currentAccount!=null){
       console.log("navigating from lading page")
@@ -17,13 +17,13 @@ function Landing() {
   }, [currentAccount])
   return (
     <div className='text-white landing_main'>
-      <div className='l_welcome'>Welcome,</div>
+      <div className='l_welcome'>{Language[28]},</div>
       
       <div className='l_bottom'>
         <div className='connect_btn' onClick={async ()=>{
         await connectWallet()
         navigate('/')
-        }}>Connect Wallet</div>
+        }}>{Language[29]}</div>
       </div>
     </div>
   )

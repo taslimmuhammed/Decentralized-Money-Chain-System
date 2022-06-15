@@ -8,7 +8,7 @@ Modal.setAppElement("#root");
 function Premium() {
     let y=0;
     const navigate = useNavigate()
-    const {checkSignIn,unitBalance,buyToken,enterGame, currentAccount,referanceData} = useContext(EthersContext)
+    const {checkSignIn,unitBalance,buyToken,enterGame, currentAccount,referanceData, Language} = useContext(EthersContext)
     const [Units, setUnits] = useState(0)
     const [BUnits, setBUnits] = useState(0)
     const [Bunit1, setBunit1] = useState(0)
@@ -49,8 +49,8 @@ function Premium() {
 
     const handleBuy= async()=>{
       setisLoading(true)
-      alert("Do not close during transaction, Only close or refresh after two confirmations from metamask")
-      if(Bunit1+In1>=90) return alert('Beyond Your Limit')
+      alert(Language[0])
+      if(Bunit1+In1>=90) return alert(Language[1])
      try{
         await buyToken(In1)
         alert( `Succefully bought ${In1} UNIT`)
@@ -68,7 +68,7 @@ function Premium() {
     setisLoading(true)
    try{
       await enterGame()
-      alert(" 1 UNIT has been used Lot, if you win your unit balance will increase automatically")
+      alert(Language[2])
       initiaor()
    } catch(e){
    console.log(e)
@@ -93,36 +93,36 @@ function Premium() {
     
   return isLoading? <Loader/>:
     <div className='p_main'>
-        <div className='p_head'>Premium Member</div>
+        <div className='p_head'>{Language[3]}</div>
         <div className='Wallet'>
-            <div className='wallet_head'>WALLET ADDRESS</div>
+            <div className='wallet_head'>{Language[4]}</div>
             <div className='wallet_address'>{currentAccount}</div>
         </div>
 
         <div className='p_bottom'>
           <div className='p_details'>
               <div>
-              <div className='sub_head'>Purchase</div>
+              <div className='sub_head'>{Language[5]}</div>
             <div className='sub_sub'>{Bunit1}/90</div>
               </div>
             
              <div>
-             <div className='sub_head'>Balance</div>
+             <div className='sub_head'>{Language[6]}</div>
             <div className='sub_sub'>{Bunit1+Ben/2-Units}</div>
              </div>
             
             </div>
-            <div className='sub_head'>Benefit Sharing</div>
+            <div className='sub_head'>{Language[7]}</div>
             <div className='sub_sub'>{Ben}USDt | {Ben/2}Units</div>
 
-            <div className='sub_head'>Reference Profit</div>
+            <div className='sub_head'>{Language[8]}</div>
             <div className='sub_sub'>{ReferalBalance} USDT</div>
               
             <div className='p_buttons' >
-            <button className="button-9" role="button" onClick={toggleModal1}>Purchase</button>
-            <button className="button-9" role="button" onClick={handleLot}>Start</button>
+            <button className="button-9" role="button" onClick={toggleModal1}>{Language[9]}</button>
+            <button className="button-9" role="button" onClick={handleLot}>{Language[10]}</button>
             </div>
-            <div className='p_rec'>Recommend Members</div>
+            <div className='p_rec'>{Language[11]}</div>
 
             <div className='p_cards'>
                 <div className='p_card'>
@@ -162,7 +162,7 @@ function Premium() {
         </div>
 
         {/* <div className='reffer_card'> */}
-            <button className='reffer_btn' onClick={toggleModal}>Get refferal Id</button>
+            <button className='reffer_btn' onClick={toggleModal}>{Language[12]}</button>
 
 <Modal
   isOpen={isOpen}
@@ -173,11 +173,11 @@ function Premium() {
   closeTimeoutMS={500}
 >
   <div className='md_1'>
-    <p>open in polygon browser :</p>
+    <p>{Language[13]} :</p>
     <a href='http://gcu.vercel.app'>http://gcu.vercel.app</a>
     <p>referral id:</p></div>
   <div className='md_5'>{currentAccount}</div>
-  <button onClick={toggleModal} className="md_3">Close X</button>
+  <button onClick={toggleModal} className="md_3">{Language[16]} X</button>
 </Modal>
 
 <Modal
@@ -188,10 +188,10 @@ function Premium() {
   overlayClassName="myoverlay"
   closeTimeoutMS={500}
 >
-  <div className='md_1'>Enter the amount of tokens (max {90-Bunit1})</div>
+  <div className='md_1'>{Language[14]} (max {90-Bunit1})</div>
   <input className='in_2' onChange={(e)=>{setIn1(e.target.value)}} type="number"></input>
-  <div onClick={handleBuy} className="button-x"> Buy Token</div>
-  <button onClick={toggleModal1} className="md_3">Close X</button>
+  <div onClick={handleBuy} className="button-x">{Language[15]}</div>
+  <button onClick={toggleModal1} className="md_3">{Language[16]} X</button>
 </Modal>
     </div>
   

@@ -10,10 +10,11 @@ import Premium from './Comonents/Premium/Premium';
 import PremiumPage from './Pages/PremiumPage';
 import Admin from './Comonents/Admin/Admin';
 function App() {
-
+  const {Lang, setLang} = useContext(EthersContext)
   return (
     <div className="main-screen">
      <div className='l_head'>Global Community Union</div>
+     <button class="button-85" role="button" onClick={()=>{setLang(!Lang)}}>{Lang?"中文":"Eng" }</button>
       <div className='l_liner'></div>
       <Router>
         <Routes>
