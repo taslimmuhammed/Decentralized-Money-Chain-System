@@ -363,7 +363,7 @@ export default function Ethers({children}){
     useEffect(() => {
       checkIfWalletIsConnect();
       // changeNetwork()
-       //getN()
+      getN()
     }, []);
 
     useEffect(() => {
