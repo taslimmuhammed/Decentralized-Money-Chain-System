@@ -1,4 +1,4 @@
-export const English = ["Do not close during transaction only close or refresh after two confirmations from POLYGON wallet",
+export const English = ["Please confirm that the purchase unit will be made when the network is smooth and Don't refresh and exit patiently wait to complete the signature twice.At the same time, gas fees can be increased to complete the transaction faster.",
 'Beyond Your Limit',
 " 1 UNIT has been used Lot, if you win your unit balance will increase automatically",
 "Premium Member",
