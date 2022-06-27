@@ -50,17 +50,22 @@ function Premium() {
     const handleBuy= async()=>{
       setisLoading(true)
       alert(Language[0])
-      if(Bunit1+In1>=90) return alert(Language[1])
-     try{
-        await buyToken(In1)
-        alert( `Succefully bought ${In1} UNIT`)
-        initiaor()
-        setIsOpen1(false)
-     } catch(e){
-     console.log(e)
-      // alert("Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon")
-      alert(e.data.message)
-    }
+      let x = parseInt(In1)
+      console.log(x, In1)
+      if(Bunit1+x>=90){ return (alert(Language[1]))}
+      else{
+        try{
+          await buyToken(In1)
+          alert( `Succefully bought ${In1} UNIT`)
+          initiaor()
+          setIsOpen1(false)
+       } catch(e){
+       console.log(e)
+        // alert("Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon")
+        alert(e.data.message)
+      }
+      }
+
      setisLoading(false)
   }
 
