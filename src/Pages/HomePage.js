@@ -8,6 +8,7 @@ function HomePage() {
   const {currentAccount, checkIfWalletIsConnect,checkSignIn} = useContext(EthersContext)
   const checker = async() => {
      const  s1 = await checkIfWalletIsConnect()
+     console.log(s1)
      if(s1===0){
       navigate("/landing")
      }else{

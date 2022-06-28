@@ -52,7 +52,7 @@ function Premium() {
       alert(Language[0])
       let x = parseInt(In1)
       console.log(x, In1)
-      if(Bunit1+x>=90){ return (alert(Language[1]))}
+      if(Bunit1+x>90){ return (alert(Language[1]))}
       else{
         try{
           await buyToken(In1)

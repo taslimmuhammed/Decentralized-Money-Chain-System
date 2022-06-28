@@ -13,15 +13,18 @@ function General() {
   const handleBuy= async()=>{
     setisLoading(true)
     if(Units==1) return alert(Language[17])
-   try{
-      await buyToken("1")
-      alert(Language[18])
-      initiaor()
-   } catch(e){
-   console.log(e.data.message)
-   alert(Language[19])
-   }
-   setisLoading(false)
+    else{
+      try{
+        await buyToken("1")
+        alert(Language[18])
+        initiaor()
+     } catch(e){
+     console.log(e.data.message)
+     alert(Language[19])
+     }
+   
+    }
+    setisLoading(false)
 }
 
 const handleLot= async()=>{
