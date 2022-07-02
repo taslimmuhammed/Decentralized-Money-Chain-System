@@ -222,6 +222,19 @@ export default function Ethers({children}){
         }
       }
 
+      const getTotalSupply = async()=>{
+        try{
+          const { ethereum } = window
+          const provider = new ethers.providers.Web3Provider(ethereum)
+          const signer = provider.getSigner()  
+          const contract = new ethers.Contract(contractAddress ,abi ,signer)
+          const balance = await contract.totalSupply()
+          const s2 =  parseInt(balance._hex, 16)
+          return s2
+        }catch(e){
+          console.log(e)
+        }
+      }
 
 
 
@@ -286,7 +299,6 @@ export default function Ethers({children}){
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
           const contract = new ethers.Contract(contractAddress, abi,signer)
-          
           const chlmt = await contract.changeLimit(limit)
           await chlmt.wait()
           alert("Limit changed succefully")
@@ -374,7 +386,7 @@ export default function Ethers({children}){
 
 
     return(
-        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt,Lang, setLang, Language}}>
+        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt,Lang, setLang, Language,getTotalSupply}}>
           {children}
         </EthersContext.Provider>
     )

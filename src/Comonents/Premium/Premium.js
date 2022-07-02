@@ -4,6 +4,7 @@ import Loader from '../Loading/Loading'
 import { useNavigate } from 'react-router-dom'
 import {EthersContext} from '../../Context/EthersContext'
 import Modal from 'react-modal'
+
 Modal.setAppElement("#root");
 function Premium() {
     let y=0;
