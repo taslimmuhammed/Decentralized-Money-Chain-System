@@ -19,10 +19,10 @@ const initiator = async()=>{
      const l2 = await getTotalSupply()
      setLimit2(l1)
      setLimit1(l2)
-    //  if(v!=true) {
-    //      alert("Not Authorized")
-    //      navigate('/')
-    //  }
+     if(v!=true) {
+         alert("Not Authorized")
+         navigate('/')
+     }
     }catch(e){
         console.log(e)
         alert(e)
