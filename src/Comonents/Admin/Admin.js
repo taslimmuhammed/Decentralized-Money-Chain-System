@@ -19,10 +19,10 @@ const initiator = async()=>{
      const l2 = await getTotalSupply()
      setLimit2(l1)
      setLimit1(l2)
-     if(v!=true) {
-         alert("Not Authorized")
-         navigate('/')
-     }
+    //  if(v!=true) {
+    //      alert("Not Authorized")
+    //      navigate('/')
+    //  }
     }catch(e){
         console.log(e)
         alert(e)
@@ -40,7 +40,7 @@ const changeOwner1=async()=>{
 
 const changeLimit1=async()=>{
     setisLoading(true)
-    if(Address==null) return alert("fill in something")
+    if(Limit==null){return alert("fill in something")}
     else {await changeLimit(Limit)
     setisLoading(false)
     initiator()}
