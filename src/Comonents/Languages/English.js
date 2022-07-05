@@ -16,7 +16,7 @@ export const English = ["Please confirm that the purchase unit will be made when
 "Buy Token",
 "Close",
 'Your limit has been reached',
-" Succefully bought 1 UNIT",
+" Succefully bought 1 UNIT, if its not reflected in your wallet try refreshing after few minutes",
 "Make sure you have 10 usdt in polygon blocchain, Note: if you have USDt in other blockchains please swap to polygon",
 " 1 UNIT has been used Lot, if you win your unit balance will increase automatically",
 "General Member",

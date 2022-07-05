@@ -71,7 +71,7 @@
 
 
 
-" Succefully bought 1 UNIT",
+" Succefully bought 1 UNIT, if its",
 完成购买一个单位
 
 
