@@ -33,7 +33,8 @@ export const English = ["Please confirm that the purchase unit will be made when
 "GENERAL",
 "Please enter your Refferal ID",
 "(*optional)",
-"Sign In"
+"Sign In",
+"Please fill in referral Id, referral is must for signing In"
 ]
 
 //premium

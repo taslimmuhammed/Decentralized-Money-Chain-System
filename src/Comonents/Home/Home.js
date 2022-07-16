@@ -12,7 +12,7 @@ function Home() {
   const navigate = useNavigate()
   const {signIn,Language} = useContext(EthersContext)
   const handleSubmit= async()=>{
-    if(refferalId==null) {alert("Please fill in referral Id, referral is must for signing In")}
+    if(refferalId==null) {alert(Language[36])}
     else{
       setisLoading(true)
       try{
