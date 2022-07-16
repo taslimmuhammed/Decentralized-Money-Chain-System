@@ -31,7 +31,7 @@ export const English = ["Please confirm that the purchase unit will be made when
 "Select Mode",
 "PREMIUM",
 "GENERAL",
-"Enter Refferal ID",
+"Please enter your Refferal ID",
 "(*optional)",
 "Sign In"
 ]

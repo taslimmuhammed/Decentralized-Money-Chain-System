@@ -94,7 +94,11 @@ export default function Ethers({children}){
           await transfer.wait()
           alert("Sign In succeful, if your are not redirected , refresh after few minutes")
         }catch(e){
-      alert(e.data.message)
+          if(e.data.message=="execution reverted: To get referal balance the referrer must have bought atleast one unit"){
+            alert("SignIn reverted, The referrer must buy atleast one Unit to refer")
+          }else{
+            alert(e.data.message)
+          }
       console.log(e)
         }
       }

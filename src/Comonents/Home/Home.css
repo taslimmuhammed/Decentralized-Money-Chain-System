@@ -5,6 +5,14 @@
    text-align: center;
    margin-bottom: 50px;
 }
+.h3{
+  color: white;
+  font-size: 20px;
+  width: 300px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  /* margin-bottom: 50px; */
+}
 .h_box{
     width: 400px;
     height: 400px;
