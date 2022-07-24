@@ -34,7 +34,8 @@ export const English = ["Please confirm that the purchase unit will be made when
 "Please enter your Refferal ID",
 "(*optional)",
 "Sign In",
-"Please fill in referral Id, referral is must for signing In"
+"Please fill in referral Id, referral is must for signing In",
+"Congratulations Dear Member ,The good news is that GCU members have more than 1,000 wallet address users, and then GCU will move towards better cultural development."
 ]
 
 //premium
