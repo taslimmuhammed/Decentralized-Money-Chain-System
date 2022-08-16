@@ -168,7 +168,7 @@ function Premium() {
         </div>
 
         {/* <div className='reffer_card'> */}
-            <button className='reffer_btn' onClick={toggleModal}>{Language[12]}</button>
+            <button className='reffer_btn' onClick={toggleModal}>WithDraw</button>
 
 <Modal
   isOpen={isOpen}

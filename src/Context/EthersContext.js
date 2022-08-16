@@ -140,6 +140,7 @@ export default function Ethers({children}){
           const contract = new ethers.Contract(usdtContractAddress, usdtAbi ,signer)
           const balance = await contract.withdrawBalanceUsdt()
           balance.wait()
+          console.log("transaction succeful")
         }catch(e){
           console.log(e)
           alert(e.data.message)
@@ -380,6 +381,7 @@ export default function Ethers({children}){
       checkIfWalletIsConnect();
       // changeNetwork()
       getN()
+      
     }, []);
 
     useEffect(() => {
@@ -390,7 +392,7 @@ export default function Ethers({children}){
 
 
     return(
-        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt,Lang, setLang, Language,getTotalSupply}}>
+        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt,Lang, setLang, Language,getTotalSupply,withdrawBalanceUsdt}}>
           {children}
         </EthersContext.Provider>
     )
