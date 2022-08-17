@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="main-screen">
      <div className='l_head'>Global Community Union</div>
-     <button class="button-85" role="button" onClick={()=>{setLang(!Lang)}}>{Lang?"中文":"Eng" }</button>
+     <button className="button-85" role="button" onClick={()=>{setLang(!Lang)}}>{Lang?"中文":"Eng" }</button>
       <div className='l_liner'></div>
       <Router>
         <Routes>

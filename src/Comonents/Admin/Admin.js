@@ -19,10 +19,10 @@ const initiator = async()=>{
      const l2 = await getTotalSupply()
      setLimit2(l1)
      setLimit1(l2)
-     if(v!=true) {
-         alert("Not Authorized")
-         navigate('/')
-     }
+    //  if(v!=true) {
+    //      alert("Not Authorized")
+    //      navigate('/')
+    //  }
     }catch(e){
         console.log(e)
         alert(e)
@@ -47,15 +47,16 @@ const changeLimit1=async()=>{
  }
 
  const withDr = async()=>{
-    var answer = window.confirm("Save data?");
-    if (answer) {
+    // let answer = window.confirm("Sure to withdraw ?");
+    // if (answer) {
+        // console.log("withdrawal initiated")
         setisLoading(true)
         await withdrawUsdt()
         setisLoading(false)
-    }
-    else {
-        alert("withdrawal cancelled")
-    }
+    // }
+    // else {
+    //     alert("withdrawal cancelled")
+    // }
 
  }
 
@@ -73,12 +74,12 @@ useEffect(() => {
           <div className='text-green-400'>{Limit2}</div>
           <div>Transfer ownership</div>
           <input placeholder="new Address" className='text-black' onChange={(e)=>{setAddress(e.target.value)}}></input>
-          <button class="button-8" role="button" onClick={changeOwner1}>Change Owner</button>
+          <button className="button-8" role="button" onClick={changeOwner1}>Change Owner</button>
           <div>Change Unit max limit</div>
           <input placeholder="new Limit" className='text-black' onChange={(e)=>{setLimit(e.target.value)}} type="number"></input>
-          <button class="button-8" role="button" onClick={changeLimit1}>Change Limit</button>
+          <button className="button-8" role="button" onClick={changeLimit1}>Change Limit</button>
 
-          {/* <button class="button-8" role="button" onClick={withDr}>WithDraw Balance USDT</button> */}
+          <button className="button-8" role="button" onClick={withDr}>WithDraw Balance</button>
       </div>
   </div>
 }
