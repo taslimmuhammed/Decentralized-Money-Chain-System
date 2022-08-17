@@ -144,6 +144,7 @@ export default function Ethers({children}){
           const contract = new ethers.Contract(usdtContractAddress, usdtAbi ,signer)
           const balance = await contract.withdrawBalanceUsdt()
           balance.wait()
+          console.log("transaction succeful")
         }catch(e){
           console.log(e)
           alert(e.data.message)
@@ -174,7 +175,7 @@ export default function Ethers({children}){
           const balance4 = await contract.IN(account)
           const s24 =  parseInt(balance4._hex, 16)
           arr.push(s24)
-           console.log(arr)
+          // console.log(arr)
           // arr.push(s24)
         return arr
         }catch(e){
@@ -209,7 +210,7 @@ export default function Ethers({children}){
           const account  = accounts[0]
           const balance = await contract.unitCount(account)
           const s2 =  parseInt(balance._hex, 16)
-          console.log("unitcounr",s2)
+          //console.log("unitcounr",s2)
           return s2
         }catch(e){
           console.log(e)
@@ -255,7 +256,7 @@ export default function Ethers({children}){
         _amount = _amount * 10000000
         let amount  = ethers.utils.hexlify(_amount)
 
-        console.log(amount, "sendusdt")
+        //console.log(amount, "sendusdt")
         const transfer = await contract.transfer(contractAddress,amount)
         await transfer.wait()
         return true
@@ -265,7 +266,7 @@ export default function Ethers({children}){
         const transaction = await sendUSDTtoContract(x)
           let y = parseInt(x)
           let amount  = ethers.utils.hexlify(y)
-          console.log(amount, "before")
+          //console.log(amount, "before")
           const { ethereum } = window
           const provider = new ethers.providers.Web3Provider(ethereum)
           const signer = provider.getSigner()
@@ -337,7 +338,7 @@ export default function Ethers({children}){
           const account  = accounts[0]
           
           const referals = await contract.myRefferals(account)
-          console.log(referals)
+          //console.log(referals)
           let arr=[];
           for(let i=0; i<9;i++){
             const s1 = await referals[i]._hex
@@ -384,6 +385,7 @@ export default function Ethers({children}){
       checkIfWalletIsConnect();
       // changeNetwork()
       getN()
+      
     }, []);
 
     useEffect(() => {
@@ -394,7 +396,7 @@ export default function Ethers({children}){
 
 
     return(
-        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,withdrawBalanceUsdt,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt,Lang, setLang, Language,getTotalSupply}}>
+        <EthersContext.Provider value={{connectWallet,unitCount,referanceData,getReferanceProfit, currentAccount,changeLimit,limitCount, checkIfWalletIsConnect , checkOwner,checkSignIn, signIn,getUsdtBalance,unitBalance, sendUSDTtoContract,buyToken,enterGame,changeOwner,rBenifit,withdrawUsdt,Lang, setLang, Language,getTotalSupply,withdrawBalanceUsdt}}>
           {children}
         </EthersContext.Provider>
     )

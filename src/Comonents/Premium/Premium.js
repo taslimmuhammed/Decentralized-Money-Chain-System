@@ -43,7 +43,7 @@ function Premium() {
         setisLoading(false)
     }
     const getReferenceDetails=  async()=>{
-      console.log("hello")
+     // console.log("hello")
      const x = await referanceData()
      setRFData(x)
     }
@@ -168,7 +168,7 @@ function Premium() {
         </div>
 
         {/* <div className='reffer_card'> */}
-            <button className='reffer_btn' onClick={toggleModal}>{Language[12]}</button>
+            <button className='reffer_btn' onClick={toggleModal}>WithDraw</button>
 
 <Modal
   isOpen={isOpen}
@@ -200,7 +200,6 @@ function Premium() {
   <button onClick={toggleModal1} className="md_3">{Language[16]} X</button>
 </Modal>
     </div>
-  
 }
 
 export default Premium

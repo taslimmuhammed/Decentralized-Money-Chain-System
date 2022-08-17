@@ -20,7 +20,7 @@ function Home() {
         //if(refferalId==null)  refferal= "0x0000000000000000000000000000000000000000"
         refferal = refferalId
        await signIn(refferal, true)
-      console.log(x)
+      //console.log(x)
       window.location.reload();
       }catch(e){
         console.log(e)
